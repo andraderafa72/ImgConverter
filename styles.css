@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.tratamento-de-imagens {
+  font-family: "Inter", "Roboto", "Poppins", sans-serif;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tratamento-de-imagens input,
+.tratamento-de-imagens select,
+.tratamento-de-imagens textarea,
+.tratamento-de-imagens button {
+  font-family: "Inter", "Roboto", "Poppins", sans-serif;
+}
+
+.tratamento-de-imagens h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.tratamento-de-imagens h1 span {
+  font-weight: bold;
+}
+
+.tratamento-de-imagens header,
+.tratamento-de-imagens main,
+.tratamento-de-imagens footer {
+  margin: 0 auto;
+  max-width: 1120px;
+  width: 100%;
+}
+
+.tratamento-de-imagens header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 5rem;
+}
+
+.tratamento-de-imagens header h1 {
+  font-size: 3.5rem;
+  max-width: 800px;
+  text-align: center;
+}
+
+.tratamento-de-imagens a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tratamento-de-imagens button, .tratamento-de-imagens a {
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 1rem;
+  width: 100%;
+  height: 3rem;
+  background: #5b1ab2;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.tratamento-de-imagens button:disabled, .tratamento-de-imagens a:disabled {
+  opacity: .6;
+}
+
+.tratamento-de-imagens button:hover:not(:disabled), .tratamento-de-imagens a:hover:not(:disabled) {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+.compressor-de-imagens, .conversor-de-imagens {
+  margin: 3rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.compressor-de-imagens h2, .conversor-de-imagens h2 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+}
+
+.compressor-de-imagens .resultado-comprimir, .compressor-de-imagens .resultado-converter, .conversor-de-imagens .resultado-comprimir, .conversor-de-imagens .resultado-converter {
+  width: calc(50% - 0.75rem);
+  height: 100%;
+}
+
+.compressor-de-imagens .resultado-comprimir p, .compressor-de-imagens .resultado-converter p, .conversor-de-imagens .resultado-comprimir p, .conversor-de-imagens .resultado-converter p {
+  margin-top: 1rem;
+  opacity: .8;
+}
+
+.compressor-de-imagens .resultado-comprimir .image, .compressor-de-imagens .resultado-converter .image, .conversor-de-imagens .resultado-comprimir .image, .conversor-de-imagens .resultado-converter .image {
+  padding: 1.5rem;
+  background: #edeef0;
+}
+
+.compressor-de-imagens .resultado-comprimir .image .image-result, .compressor-de-imagens .resultado-converter .image .image-result, .conversor-de-imagens .resultado-comprimir .image .image-result, .conversor-de-imagens .resultado-converter .image .image-result {
+  margin-top: 1.5rem;
+  height: 200px;
+  width: 100%;
+  border: 3px dashed #fff;
+  border-radius: 1rem;
+}
+
+.compressor-de-imagens .resultado-comprimir .image .image-result img, .compressor-de-imagens .resultado-converter .image .image-result img, .conversor-de-imagens .resultado-comprimir .image .image-result img, .conversor-de-imagens .resultado-converter .image .image-result img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.compressor-de-imagens .resultado-comprimir button, .compressor-de-imagens .resultado-comprimir a, .compressor-de-imagens .resultado-converter button, .compressor-de-imagens .resultado-converter a, .conversor-de-imagens .resultado-comprimir button, .conversor-de-imagens .resultado-comprimir a, .conversor-de-imagens .resultado-converter button, .conversor-de-imagens .resultado-converter a {
+  background: #111;
+}
+
+.compressor-de-imagens {
+  margin-bottom: 7.5rem;
+}
+
+.form {
+  width: calc(50% - 0.75rem);
+  background: #edeef0;
+  padding: 1.5rem;
+}
+
+.form input, .form select {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
+  border: 1px solid #fff;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.form input:hover, .form select:hover {
+  border-color: #5b1ab2;
+}
+
+.form input[type="file"], .form select[type="file"] {
+  display: none;
+}
+
+.form label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.form label[for="comprimir"], .form label[for="converter"] {
+  margin-bottom: 2rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #454545;
+  width: 100%;
+  height: 200px;
+  border: 3px dashed #fff;
+  border-radius: 1rem;
+  -webkit-transition: .2s;
+  transition: .2s;
+  padding: 1rem;
+}
+
+.form label[for="comprimir"] span, .form label[for="converter"] span {
+  font-size: 2rem;
+  color: #5b1ab2;
+  margin-left: 1rem;
+  font-weight: normal;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.form label[for="comprimir"] img, .form label[for="converter"] img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.form label[for="comprimir"]:hover, .form label[for="converter"]:hover {
+  border-color: #5b1ab2;
+}
+/*# sourceMappingURL=styles.css.map */

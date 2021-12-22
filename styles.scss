@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.tratamento-de-imagens {
+  font-family: "Inter", "Roboto", "Poppins", sans-serif;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: "Inter", "Roboto", "Poppins", sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: normal;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  header,
+  main,
+  footer {
+    margin: 0 auto;
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    h1 {
+      font-size: 3.5rem;
+      max-width: 800px;
+      text-align: center;
+    }
+  }
+
+  a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button, a{
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+    background: #5b1ab2; 
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+
+    &:disabled{
+      opacity: .6;
+    }
+
+    &:hover:not(:disabled){
+      filter: brightness(.9);
+    }
+  }
+}
+
+.compressor-de-imagens, .conversor-de-imagens {
+  margin: 3rem 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  h2 {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+  }
+
+  .resultado-comprimir, .resultado-converter{
+    width: calc(50% - 0.75rem);
+    height: 100%;
+    
+    p{
+      margin-top: 1rem;
+      opacity: .8;
+    }
+    
+    .image{
+      padding: 1.5rem;
+      background: #edeef0;
+
+      .image-result{
+        margin-top: 1.5rem;
+        height: 200px;
+        width: 100%;
+
+        img{
+          height: 100%;
+          width: 100%;
+  
+          object-fit: contain;
+        }
+        border: 3px dashed #fff;
+        border-radius: 1rem;
+      }
+    }
+
+    button, a{
+      background: #111;
+    }
+  }
+}
+
+.compressor-de-imagens{
+  margin-bottom: 7.5rem;
+}
+
+
+.form {
+  width: calc(50% - 0.75rem);
+  background: #edeef0;
+
+  padding: 1.5rem;
+
+  input, select {
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+    border: 1px solid #fff;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+
+    &:hover{
+      border-color: #5b1ab2;
+    }
+    &[type="file"] {
+      display: none;
+    }
+  }
+
+  label{
+    display: inline-flex;
+    margin-bottom: 1rem;
+  }
+
+  label[for="comprimir"], label[for="converter"]{
+    margin-bottom: 2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #454545;
+    width: 100%;
+    height: 200px;
+    border: 3px dashed #fff;
+    border-radius: 1rem;
+    transition: .2s;
+    padding: 1rem;
+    span {
+      font-size: 2rem;
+      color: #5b1ab2;
+      margin-left: 1rem;
+      font-weight: normal;
+      transform: translateY(-3px);
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &:hover{
+      border-color: #5b1ab2;
+    }
+  }
+}

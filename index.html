@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <section class="tratamento-de-imagens">
+    <main>
+
+      <div class="compressor-de-imagens">
+        <h2>Compressor de imagens</h2>
+        <div class="form">
+          <input type="file" name="comprimir" id="comprimir" accept="image/*">
+          <label for="comprimir">Anexar arquivo <span>+</span></label>
+          
+          <label for="porcentagem">Porcentagem de otimização (10% - 100% de qualidade)</label>
+          <input type="number" min="10" max="100" name="porcentagem" id="porcentagem">
+          <button type="button" class="button-comprimir" onclick="comprimirArquivo()" disabled>Comprimir arquivo</button>
+        </div>
+
+        <div class="resultado-comprimir">
+          <div class="image">
+            <h3>Resultado de conversão</h3>
+
+            <div class="image-result">
+
+            </div>
+          </div>
+
+          <button class="download" disabled>Download</button>
+          
+        </div>
+      </div>
+
+      <div class="conversor-de-imagens">
+        <h2>Conversor de imagens</h2>
+
+        <div class="form">
+          <label for="converter">Anexar arquivo <span>+</span></label>
+          <input type="file" name="converter" id="converter" accept="image/*">
+
+          <label for="">Converter de:</label>
+          <select name="tipo" id="" class="meu-arquivo">
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WebP</option>
+          </select>
+          <label for="">Para:</label>
+          <select name="tipo" id="" class="tipo-de-arquivo">
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WebP</option>
+          </select>
+          <button type="button" class="button-converter" onclick="converterArquivo()">Converter arquivo</button>
+
+        </div>
+
+
+        <div class="resultado-converter">
+          <div class="image">
+            <h3>Resultado de conversão</h3>
+
+            <div class="image-result">
+
+            </div>
+          </div>
+
+          <button class="download" disabled>Download</button>
+          
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
