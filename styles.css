@@ -27,7 +27,7 @@
 .tratamento-de-imagens h1 {
   text-align: center;
   margin-bottom: 2rem;
-  font-weight: normal;
+  font-weight: 600;
 }
 
 .tratamento-de-imagens h1 span {
@@ -75,7 +75,8 @@
           justify-content: center;
 }
 
-.tratamento-de-imagens button, .tratamento-de-imagens a {
+.tratamento-de-imagens button,
+.tratamento-de-imagens a {
   cursor: pointer;
   text-decoration: none;
   margin-top: 1rem;
@@ -87,16 +88,19 @@
   font-size: 1rem;
 }
 
-.tratamento-de-imagens button:disabled, .tratamento-de-imagens a:disabled {
-  opacity: .6;
+.tratamento-de-imagens button:disabled,
+.tratamento-de-imagens a:disabled {
+  opacity: 0.6;
 }
 
-.tratamento-de-imagens button:hover:not(:disabled), .tratamento-de-imagens a:hover:not(:disabled) {
+.tratamento-de-imagens button:hover:not(:disabled),
+.tratamento-de-imagens a:hover:not(:disabled) {
   -webkit-filter: brightness(0.9);
           filter: brightness(0.9);
 }
 
-.compressor-de-imagens, .conversor-de-imagens {
+.compressor-de-imagens,
+.conversor-de-imagens {
   margin: 3rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -106,28 +110,63 @@
       flex-wrap: wrap;
 }
 
-.compressor-de-imagens h2, .conversor-de-imagens h2 {
+.compressor-de-imagens h2,
+.conversor-de-imagens h2 {
   width: 100%;
   margin-bottom: 1.5rem;
   font-weight: normal;
 }
 
-.compressor-de-imagens .resultado-comprimir, .compressor-de-imagens .resultado-converter, .conversor-de-imagens .resultado-comprimir, .conversor-de-imagens .resultado-converter {
+.compressor-de-imagens .resultado-comprimir,
+.compressor-de-imagens .resultado-converter,
+.conversor-de-imagens .resultado-comprimir,
+.conversor-de-imagens .resultado-converter {
   width: calc(50% - 0.75rem);
   height: 100%;
 }
 
-.compressor-de-imagens .resultado-comprimir p, .compressor-de-imagens .resultado-converter p, .conversor-de-imagens .resultado-comprimir p, .conversor-de-imagens .resultado-converter p {
+.compressor-de-imagens .resultado-comprimir p,
+.compressor-de-imagens .resultado-converter p,
+.conversor-de-imagens .resultado-comprimir p,
+.conversor-de-imagens .resultado-converter p {
   margin-top: 1rem;
-  opacity: .8;
+  opacity: 0.8;
 }
 
-.compressor-de-imagens .resultado-comprimir .image, .compressor-de-imagens .resultado-converter .image, .conversor-de-imagens .resultado-comprimir .image, .conversor-de-imagens .resultado-converter .image {
+.compressor-de-imagens .resultado-comprimir .image,
+.compressor-de-imagens .resultado-converter .image,
+.conversor-de-imagens .resultado-comprimir .image,
+.conversor-de-imagens .resultado-converter .image {
   padding: 1.5rem;
   background: #edeef0;
 }
 
-.compressor-de-imagens .resultado-comprimir .image .image-result, .compressor-de-imagens .resultado-converter .image .image-result, .conversor-de-imagens .resultado-comprimir .image .image-result, .conversor-de-imagens .resultado-converter .image .image-result {
+.compressor-de-imagens .resultado-comprimir .image h3,
+.compressor-de-imagens .resultado-converter .image h3,
+.conversor-de-imagens .resultado-comprimir .image h3,
+.conversor-de-imagens .resultado-converter .image h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.compressor-de-imagens .resultado-comprimir .image h3 button,
+.compressor-de-imagens .resultado-converter .image h3 button,
+.conversor-de-imagens .resultado-comprimir .image h3 button,
+.conversor-de-imagens .resultado-converter .image h3 button {
+  display: inline-block;
+  width: 3rem;
+  -webkit-transform: translateY(-1.5rem);
+          transform: translateY(-1.5rem);
+}
+
+.compressor-de-imagens .resultado-comprimir .image .image-result,
+.compressor-de-imagens .resultado-converter .image .image-result,
+.conversor-de-imagens .resultado-comprimir .image .image-result,
+.conversor-de-imagens .resultado-converter .image .image-result {
   margin-top: 1.5rem;
   height: 200px;
   width: 100%;
@@ -135,14 +174,24 @@
   border-radius: 1rem;
 }
 
-.compressor-de-imagens .resultado-comprimir .image .image-result img, .compressor-de-imagens .resultado-converter .image .image-result img, .conversor-de-imagens .resultado-comprimir .image .image-result img, .conversor-de-imagens .resultado-converter .image .image-result img {
+.compressor-de-imagens .resultado-comprimir .image .image-result img,
+.compressor-de-imagens .resultado-converter .image .image-result img,
+.conversor-de-imagens .resultado-comprimir .image .image-result img,
+.conversor-de-imagens .resultado-converter .image .image-result img {
   height: 100%;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.compressor-de-imagens .resultado-comprimir button, .compressor-de-imagens .resultado-comprimir a, .compressor-de-imagens .resultado-converter button, .compressor-de-imagens .resultado-converter a, .conversor-de-imagens .resultado-comprimir button, .conversor-de-imagens .resultado-comprimir a, .conversor-de-imagens .resultado-converter button, .conversor-de-imagens .resultado-converter a {
+.compressor-de-imagens .resultado-comprimir button,
+.compressor-de-imagens .resultado-comprimir a,
+.compressor-de-imagens .resultado-converter button,
+.compressor-de-imagens .resultado-converter a,
+.conversor-de-imagens .resultado-comprimir button,
+.conversor-de-imagens .resultado-comprimir a,
+.conversor-de-imagens .resultado-converter button,
+.conversor-de-imagens .resultado-converter a {
   background: #111;
 }
 
@@ -156,7 +205,8 @@
   padding: 1.5rem;
 }
 
-.form input, .form select {
+.form input,
+.form select {
   width: 100%;
   height: 3rem;
   font-size: 1rem;
@@ -165,11 +215,13 @@
   padding: 0 1rem;
 }
 
-.form input:hover, .form select:hover {
+.form input:hover,
+.form select:hover {
   border-color: #5b1ab2;
 }
 
-.form input[type="file"], .form select[type="file"] {
+.form input[type="file"],
+.form select[type="file"] {
   display: none;
 }
 
@@ -180,7 +232,8 @@
   margin-bottom: 1rem;
 }
 
-.form label[for="comprimir"], .form label[for="converter"] {
+.form label[for="comprimir"],
+.form label[for="converter"] {
   margin-bottom: 2rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -197,12 +250,13 @@
   height: 200px;
   border: 3px dashed #fff;
   border-radius: 1rem;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   padding: 1rem;
 }
 
-.form label[for="comprimir"] span, .form label[for="converter"] span {
+.form label[for="comprimir"] span,
+.form label[for="converter"] span {
   font-size: 2rem;
   color: #5b1ab2;
   margin-left: 1rem;
@@ -211,14 +265,16 @@
           transform: translateY(-3px);
 }
 
-.form label[for="comprimir"] img, .form label[for="converter"] img {
+.form label[for="comprimir"] img,
+.form label[for="converter"] img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.form label[for="comprimir"]:hover, .form label[for="converter"]:hover {
+.form label[for="comprimir"]:hover,
+.form label[for="converter"]:hover {
   border-color: #5b1ab2;
 }
 /*# sourceMappingURL=styles.css.map */

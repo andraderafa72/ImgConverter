@@ -32,12 +32,14 @@
           
           <label for="porcentagem">Porcentagem de otimização (10% - 100% de qualidade)</label>
           <input type="number" min="10" max="100" name="porcentagem" id="porcentagem">
+          <label for="tamanho">Tamanho máximo do arquivo (em KB)</label>
+          <input type="number" min="10" max="10000" name="tamanho" id="tamanho">
           <button type="button" class="button-comprimir" onclick="comprimirArquivo()" disabled>Comprimir arquivo</button>
         </div>
 
         <div class="resultado-comprimir">
           <div class="image">
-            <h3>Resultado de conversão</h3>
+            <h3>Resultado de conversão <button onclick="clearCompress()">X</button></h3>
 
             <div class="image-result">
 
@@ -75,7 +77,7 @@
 
         <div class="resultado-converter">
           <div class="image">
-            <h3>Resultado de conversão</h3>
+            <h3>Resultado de conversão <button onclick="clearConvert()">X</button></h3>
 
             <div class="image-result">
 
