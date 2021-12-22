@@ -1,10 +1,12 @@
 const comprimir = document.querySelector("#comprimir");
 const percentageInput = document.querySelector("#porcentagem");
 const buttonComprimir = document.querySelector(".button-comprimir");
+const compressResultDiv = document.querySelector(".resultado-comprimir");
 
 const converter = document.querySelector("#converter");
 const buttonConverter = document.querySelector(".button-converter");
 const typeInput = document.querySelector(".tipo-de-arquivo");
+const convertResultDiv = document.querySelector(".resultado-converter");
 
 const inputComprimirData = {
   img: false,
@@ -76,7 +78,9 @@ function updateButtonConverter() {
 }
 
 function renderResultCompressedImage(url, filename) {
-  const compressResultDiv = document.querySelector(".resultado-comprimir");
+  const loading = document.querySelector('.loading');
+  compressResultDiv.removeChild(loading);
+
   const downloadButton = document.querySelector(
     ".resultado-comprimir .download"
   );
@@ -102,7 +106,9 @@ function renderResultCompressedImage(url, filename) {
 }
 
 function renderResultConvertedImage(url, filename) {
-  const convertResultDiv = document.querySelector(".resultado-converter");
+  const loading = document.querySelector('.loading')
+  convertResultDiv.removeChild(loading);
+   
   const downloadButton = document.querySelector(
     ".resultado-converter .download"
   );
@@ -128,6 +134,10 @@ function renderResultConvertedImage(url, filename) {
 
 function comprimirArquivo() {
   const file = document.querySelector("#comprimir").files[0];
+  const p = document.createElement("p")
+  p.innerHTML="Comprimindo..."
+  p.classList.add('loading')
+  compressResultDiv.appendChild(p)
 
   const porcentagemDeCompressao = percentageInput.value;
 
@@ -145,7 +155,11 @@ function comprimirArquivo() {
 
 function converterArquivo() {
   const file = document.querySelector("#converter").files[0];
-  const convertResultDiv = document.querySelector(".resultado-converter");
+
+  const p = document.createElement("p")
+  p.innerHTML="Convertendo..."
+  p.classList.add('loading')
+  convertResultDiv.appendChild(p)
 
   console.log(file, "file");
 
