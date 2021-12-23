@@ -4,11 +4,25 @@ const tamanhoInput = document.querySelector("#tamanho");
 const buttonComprimir = document.querySelector(".button-comprimir");
 const compressResultDiv = document.querySelector(".resultado-comprimir");
 
+const radios = document.querySelectorAll('.radio .input-group input[type="radio"]')
+
 const inputComprimirData = {
   img: false,
   percentage: false,
   size: false,
 };
+
+radios.forEach(radio => {
+  radio.addEventListener('input', e => {
+    if(e.target.value === 'porcentagem'){
+      percentageInput.disabled = false;
+      tamanhoInput.disabled = true;
+    } else {
+      percentageInput.disabled = true;
+      tamanhoInput.disabled = false;
+    }
+  });
+})
 
 tamanhoInput.addEventListener("input", (e) => {
   if (e.target.value !== "") {

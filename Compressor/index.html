@@ -28,12 +28,25 @@
         <div class="form">
           <input type="file" name="comprimir" id="comprimir" accept="image/*" multiple>
           <label for="comprimir">Anexar arquivo <span>+</span></label>
-          
+
+          <div class="radio">
+            <div class="input-group">
+              <input type="radio" name="type" id="porcentagem-radio" value="porcentagem" checked>
+              <label for="porcentagem-radio">Porcentagem</label>
+            </div>
+
+            <div class="input-group">
+              <input type="radio" name="type" id="tamanho-radio" value="tamanho">
+              <label for="tamanho-radio">Tamanho</label>
+            </div>
+          </div>
+
           <label for="porcentagem">Porcentagem de otimização (10% - 100% de qualidade)</label>
           <input type="number" min="10" max="100" name="porcentagem" id="porcentagem">
           <label for="tamanho">Tamanho máximo do arquivo (em KB)</label>
-          <input type="number" min="10" max="10000" name="tamanho" id="tamanho">
-          <button type="button" class="button-comprimir" onclick="handleSubmitFiles()" disabled>Comprimir arquivo</button>
+          <input type="number" min="10" max="10000" name="tamanho" id="tamanho" disabled>
+          <button type="button" class="button-comprimir" onclick="handleSubmitFiles()" disabled>Comprimir
+            arquivo</button>
         </div>
 
         <div class="resultado-comprimir">
@@ -46,7 +59,7 @@
           </div>
 
           <!-- <button class="download" disabled>Download</button> -->
-          
+
         </div>
       </div>
 
