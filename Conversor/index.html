@@ -20,57 +20,21 @@
 
   <section class="tratamento-de-imagens">
     <header>
-      <h1>Compressor e conversor de imagens</h1>
+      <h1>Conversor de imagens</h1>
     </header>
     <main>
 
-      <div class="compressor-de-imagens">
-        <h2>Compressor de imagens</h2>
-        <div class="form">
-          <input type="file" name="comprimir" id="comprimir" accept="image/*">
-          <label for="comprimir">Anexar arquivo <span>+</span></label>
-          
-          <label for="porcentagem">Porcentagem de otimização (10% - 100% de qualidade)</label>
-          <input type="number" min="10" max="100" name="porcentagem" id="porcentagem">
-          <label for="tamanho">Tamanho máximo do arquivo (em KB)</label>
-          <input type="number" min="10" max="10000" name="tamanho" id="tamanho">
-          <button type="button" class="button-comprimir" onclick="comprimirArquivo()" disabled>Comprimir arquivo</button>
-        </div>
-
-        <div class="resultado-comprimir">
-          <div class="image">
-            <h3>Resultado de conversão <button onclick="clearCompress()">X</button></h3>
-
-            <div class="image-result">
-
-            </div>
-          </div>
-
-          <button class="download" disabled>Download</button>
-          
-        </div>
-      </div>
-
       <div class="conversor-de-imagens">
-        <h2>Conversor de imagens</h2>
-
         <div class="form">
           <label for="converter">Anexar arquivo <span>+</span></label>
-          <input type="file" name="converter" id="converter" accept="image/*">
-
-          <!-- <label for="">Converter de:</label>
-          <select name="tipo" id="" class="meu-arquivo">
-            <option value="jpeg">JPG</option>
-            <option value="png">PNG</option>
-            <option value="webp">WebP</option>
-          </select> -->
+          <input type="file" name="converter" id="converter" accept="image/*" multiple>
           <label for="">Converter para:</label>
           <select name="tipo" id="" class="tipo-de-arquivo">
             <option value="jpeg">JPG</option>
             <option value="png">PNG</option>
             <option value="webp">WebP</option>
           </select>
-          <button type="button" class="button-converter" onclick="converterArquivo()">Converter arquivo</button>
+          <button type="button" class="button-converter" onclick="handleSubmitImages()">Converter arquivo</button>
 
         </div>
 
@@ -83,8 +47,6 @@
 
             </div>
           </div>
-
-          <button class="download" disabled>Download</button>
           
         </div>
 

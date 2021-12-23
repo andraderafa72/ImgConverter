@@ -1,35 +1,15 @@
-const comprimir = document.querySelector("#comprimir");
-const percentageInput = document.querySelector("#porcentagem");
-const tamanhoInput = document.querySelector("#tamanho");
-const buttonComprimir = document.querySelector(".button-comprimir");
-const compressResultDiv = document.querySelector(".resultado-comprimir");
-
 const converter = document.querySelector("#converter");
 const buttonConverter = document.querySelector(".button-converter");
 const typeInput = document.querySelector(".tipo-de-arquivo");
 const convertResultDiv = document.querySelector(".resultado-converter");
-
-const inputComprimirData = {
-  img: false,
-  percentage: false,
-  size: false,
-};
 
 const inputConverterData = {
   img: false,
   type: false,
 };
 
-tamanhoInput.addEventListener("input", (e) => {
-  if (e.target.value !== "") {
-    inputComprimirData.size = true;
-  } else {
-    inputComprimirData.size = false;
-  }
-  updateButtonComprimir();
-});
-
 typeInput.addEventListener("input", (e) => {
+  console.log(e.target.value);
   if (e.target.value !== "") {
     inputConverterData.percentage = true;
   } else {
@@ -38,68 +18,37 @@ typeInput.addEventListener("input", (e) => {
   updateButtonConverter();
 });
 
-percentageInput.addEventListener("input", (e) => {
-  const porcentagemDeCompressao = percentageInput.value;
-  if (porcentagemDeCompressao >= 10 || porcentagemDeCompressao <= 100) {
-    inputComprimirData.percentage = true;
-  } else {
-    inputComprimirData.percentage = false;
-  }
-  updateButtonComprimir();
-});
-
-comprimir.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  const labelComprimir = document.querySelector('label[for="comprimir"]');
-  const blob = URL.createObjectURL(file);
-
-  const img = document.createElement("img");
-
-  img.src = blob;
-  inputComprimirData.img = true;
-  labelComprimir.innerHTML = "";
-  labelComprimir.appendChild(img);
-  updateButtonComprimir();
-});
-
 converter.addEventListener("change", (e) => {
-  const file = e.target.files[0];
+  const files = e.target.files;
   const labelConverter = document.querySelector('label[for="converter"]');
-  const blob = URL.createObjectURL(file);
-
-  const img = document.createElement("img");
-
-  img.src = blob;
-  inputConverterData.img = true;
   labelConverter.innerHTML = "";
-  labelConverter.appendChild(img);
+
+  Array.from(files).forEach((file) => {
+    const blob = URL.createObjectURL(file);
+
+    const img = document.createElement("img");
+
+    img.src = blob;
+    inputConverterData.img = true;
+    labelConverter.appendChild(img);
+  });
+
   updateButtonConverter();
 });
 
-function updateButtonComprimir() {
-  buttonComprimir.disabled = !(
-    inputComprimirData.img &&
-    (inputComprimirData.percentage || inputComprimirData.size)
-  );
-}
-
 function updateButtonConverter() {
-  buttonComprimir.disabled = !(
-    inputConverterData.img && inputConverterData.type
-  );
+  buttonConverter.disabled = inputConverterData.img && inputConverterData.type;
 }
 
-function renderResultCompressedImage(url, filename) {
+function renderResultConvertedImage(url, filename) {
   const loading = document.querySelector(".loading");
-  compressResultDiv.removeChild(loading);
+  convertResultDiv.removeChild(loading);
 
-  const downloadButton = document.querySelector(
-    ".resultado-comprimir .download"
-  );
   const resultDiv = document.querySelector(
-    ".resultado-comprimir .image .image-result"
+    ".resultado-converter .image .image-result"
   );
-  const imageDiv = document.querySelector(".resultado-comprimir .image");
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("wrapper");
 
   const button = createDownloadButton(url, filename);
   const p = document.createElement("p");
@@ -109,149 +58,85 @@ function renderResultCompressedImage(url, filename) {
   const img = document.createElement("img");
   img.src = url;
 
-  resultDiv.appendChild(img);
-  imageDiv.appendChild(p);
-  compressResultDiv.removeChild(downloadButton);
-  compressResultDiv.appendChild(button);
-}
+  wrapper.appendChild(img);
+  wrapper.appendChild(p);
+  wrapper.appendChild(button);
 
-function renderResultConvertedImage(url, filename) {
-  const loading = document.querySelector(".loading");
-  convertResultDiv.removeChild(loading);
-
-  const downloadButton = document.querySelector(
-    ".resultado-converter .download"
-  );
-  const resultDiv = document.querySelector(
-    ".resultado-converter .image .image-result"
-  );
-  const imageDiv = document.querySelector(".resultado-converter .image");
-
-  const button = createDownloadButton(url, filename);
-    console.log(button);
-  const img = document.createElement("img");
-  img.src = url;
-
-  resultDiv.appendChild(img);
-  convertResultDiv.removeChild(downloadButton);
-  convertResultDiv.appendChild(button);
-}
-
-function clearCompress() {
-  const image = document.querySelector(".resultado-comprimir .image");
-  const imageResult = document.querySelector(
-    ".resultado-comprimir .image .image-result"
-  );
-  const p = document.querySelector(".resultado-comprimir .image p");
-  const img = document.querySelector(
-    ".resultado-comprimir .image .image-result img"
-  );
-
-  inputComprimirData.img = false;
-  inputComprimirData.percentage = false;
-  inputComprimirData.size = false;
-
-  img && imageResult.removeChild(img);
-  p && image.removeChild(p);
+  resultDiv.appendChild(wrapper);
 }
 
 function clearConvert() {
-  const image = document.querySelector(".resultado-converter .image");
   const imageResult = document.querySelector(
     ".resultado-converter .image .image-result"
   );
-  const p = document.querySelector(".resultado-converter .image p");
-  const img = document.querySelector(
-    ".resultado-converter .image .image-result img"
+  const results = document.querySelectorAll(
+    ".resultado-converter .image .image-result .wrapper"
   );
 
-  inputConverterData.img = false
-  inputConverterData.type = false
+  results.forEach(result => {
+    imageResult.removeChild(result)
+  })
 
-  img && imageResult.removeChild(img);
-  p && image.removeChild(p);
+  inputConverterData.img = false;
+  inputConverterData.type = false;
 }
 
-// updateButtonComprimir()
+async function handleSubmitImages() {
+  const files = document.querySelector("#converter").files;
 
-function comprimirArquivo() {
-  clearCompress();
-
-  const file = document.querySelector("#comprimir").files[0];
-  const p = document.createElement("p");
-  p.innerHTML = "Comprimindo...";
-  p.classList.add("loading");
-  compressResultDiv.appendChild(p);
-
-  const porcentagemDeCompressao = percentageInput.value;
-  const tamanhoDeCompressao = tamanhoInput.value;
-
-  if (
-    !tamanhoDeCompressao &&
-    (porcentagemDeCompressao < 10 || porcentagemDeCompressao > 100)
-  )
-    return;
-
-  if (tamanhoDeCompressao) {
-    console.log("aqui");
-    imageConversion
-      .compressAccurately(file, tamanhoDeCompressao)
-      .then((res) => {
-        console.log(res);
-        const url = URL.createObjectURL(res);
-
-        renderResultCompressedImage(url, "compressed_" + file.name);
-      });
-  } else {
-    imageConversion
-      .compress(file, Number(porcentagemDeCompressao) / 100)
-      .then((res) => {
-        console.log(res);
-        const url = URL.createObjectURL(res);
-
-        renderResultCompressedImage(url, "compressed_" + file.name);
-      });
-  }
+  Array.from(files).forEach(async (file) => {
+    console.log(file);
+    const blob = URL.createObjectURL(file);
+    await converterArquivo(blob, file.name);
+  });
 }
 
-function converterArquivo() {
+async function converterArquivo(blob, filename) {
   clearConvert();
-
-  const file = document.querySelector("#converter").files[0];
 
   const p = document.createElement("p");
   p.innerHTML = "Convertendo...";
   p.classList.add("loading");
   convertResultDiv.appendChild(p);
 
-
   const tipoDeArquivo = document.querySelector(".tipo-de-arquivo").value;
 
-  const blob = URL.createObjectURL(file);
+  if (!blob || !tipoDeArquivo) {
+    console.log(blob, tipoDeArquivo);
+    console.log("nao passou");
+    return;
+  }
+
+  let name, url;
   const img = new Image();
   img.src = blob;
 
-  setTimeout(() => {
-    imageConversion.imagetoCanvas(img).then((res) => {
-      imageConversion
-        .canvastoFile(res, 0.5, "image/" + tipoDeArquivo)
-        .then((obj) => {
-          const url = URL.createObjectURL(obj);
-          console.log(url, "url");
+  console.log(img);
 
-          const name = file.name
-            .replace(".png", "")
-            .replace(".jpg", "")
-            .replace(".jpeg", "")
-            .replace(".webp", "");
+  setTimeout(async () => {
+    const canvas = await imageConversion.imagetoCanvas(img);
+    console.log(canvas, "canvas");
+    const obj = await imageConversion.canvastoFile(
+      canvas,
+      0.5,
+      "image/" + tipoDeArquivo
+    );
 
-          renderResultConvertedImage(
-            url,
-            "coverted_" + name + "." + tipoDeArquivo
-          );
-        });
-    });
-  }, 3000);
+    url = URL.createObjectURL(obj);
+
+    name =
+      "converted_" +
+      filename
+        .replace(".png", "")
+        .replace(".jpg", "")
+        .replace(".jpeg", "")
+        .replace(".jfif", "")
+        .replace(".webp", "") +
+      "." +
+      tipoDeArquivo;
+
+    renderResultConvertedImage(url, name);
+  }, 1000);
 }
 
 function createDownloadButton(fileUrl, fileName) {
