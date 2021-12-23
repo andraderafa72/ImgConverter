@@ -91,7 +91,7 @@
 
   .resultado-comprimir,
   .resultado-converter {
-    width: calc(50% - 0.75rem);
+    width: 100%;
     height: 100%;
 
     p {
@@ -116,12 +116,25 @@
 
       .image-result {
         margin-top: 1.5rem;
-        height: 200px;
+        min-height: 400px;
         width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
 
+        .wrapper{
+          height: 400px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content:space-between;
+        }
         img {
           height: 100%;
           width: 100%;
+
+          max-height: 250px;
 
           object-fit: contain;
         }
@@ -142,7 +155,7 @@
 }
 
 .form {
-  width: calc(50% - 0.75rem);
+  width: 100%;
   background: #edeef0;
 
   padding: 1.5rem;
