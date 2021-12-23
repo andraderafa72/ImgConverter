@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .tratamento-de-imagens {
+      font-family: "Inter", "Roboto", "Poppins", sans-serif;
+      padding: 2rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+
+    .tratamento-de-imagens input:disabled {
+      opacity: .6;
+    }
+
+    .tratamento-de-imagens input,
+    .tratamento-de-imagens select,
+    .tratamento-de-imagens textarea,
+    .tratamento-de-imagens button {
+      font-family: "Inter", "Roboto", "Poppins", sans-serif;
+    }
+
+    .tratamento-de-imagens h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .tratamento-de-imagens h1 span {
+      font-weight: bold;
+    }
+
+    .tratamento-de-imagens header,
+    .tratamento-de-imagens main,
+    .tratamento-de-imagens footer {
+      margin: 0 auto;
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    .tratamento-de-imagens header {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      gap: 3rem;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      margin-bottom: 5rem;
+    }
+
+    .tratamento-de-imagens header h1 {
+      font-size: 3.5rem;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .tratamento-de-imagens a {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    .tratamento-de-imagens button,
+    .tratamento-de-imagens a {
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 1rem;
+      width: 100%;
+      height: 3rem;
+      background: #5b1ab2;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .tratamento-de-imagens button:disabled,
+    .tratamento-de-imagens a:disabled {
+      opacity: 0.6;
+    }
+
+    .tratamento-de-imagens button:hover:not(:disabled),
+    .tratamento-de-imagens a:hover:not(:disabled) {
+      -webkit-filter: brightness(0.9);
+      filter: brightness(0.9);
+    }
+
+    .compressor-de-imagens,
+    .conversor-de-imagens {
+      margin: 3rem 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 1.5rem;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+
+    .compressor-de-imagens h2,
+    .conversor-de-imagens h2 {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      font-weight: normal;
+    }
+
+    .compressor-de-imagens .resultado-comprimir,
+    .compressor-de-imagens .resultado-converter,
+    .conversor-de-imagens .resultado-comprimir,
+    .conversor-de-imagens .resultado-converter {
+      width: 100%;
+      height: 100%;
+    }
+
+    .compressor-de-imagens .resultado-comprimir p,
+    .compressor-de-imagens .resultado-converter p,
+    .conversor-de-imagens .resultado-comprimir p,
+    .conversor-de-imagens .resultado-converter p {
+      margin-top: 1rem;
+      opacity: 0.8;
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image,
+    .compressor-de-imagens .resultado-converter .image,
+    .conversor-de-imagens .resultado-comprimir .image,
+    .conversor-de-imagens .resultado-converter .image {
+      padding: 1.5rem;
+      background: #edeef0;
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image h3,
+    .compressor-de-imagens .resultado-converter .image h3,
+    .conversor-de-imagens .resultado-comprimir .image h3,
+    .conversor-de-imagens .resultado-converter .image h3 {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image h3 button,
+    .compressor-de-imagens .resultado-converter .image h3 button,
+    .conversor-de-imagens .resultado-comprimir .image h3 button,
+    .conversor-de-imagens .resultado-converter .image h3 button {
+      display: inline-block;
+      width: 3rem;
+      -webkit-transform: translateY(-1.5rem);
+      transform: translateY(-1.5rem);
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image .image-result,
+    .compressor-de-imagens .resultado-converter .image .image-result,
+    .conversor-de-imagens .resultado-comprimir .image .image-result,
+    .conversor-de-imagens .resultado-converter .image .image-result {
+      margin-top: 1.5rem;
+      min-height: 400px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border: 3px dashed #fff;
+      border-radius: 1rem;
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image .image-result .wrapper,
+    .compressor-de-imagens .resultado-converter .image .image-result .wrapper,
+    .conversor-de-imagens .resultado-comprimir .image .image-result .wrapper,
+    .conversor-de-imagens .resultado-converter .image .image-result .wrapper {
+      height: 400px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .compressor-de-imagens .resultado-comprimir .image .image-result img,
+    .compressor-de-imagens .resultado-converter .image .image-result img,
+    .conversor-de-imagens .resultado-comprimir .image .image-result img,
+    .conversor-de-imagens .resultado-converter .image .image-result img {
+      height: 100%;
+      width: 100%;
+      max-height: 250px;
+      -o-object-fit: contain;
+      object-fit: contain;
+    }
+
+    .compressor-de-imagens .resultado-comprimir button,
+    .compressor-de-imagens .resultado-comprimir a,
+    .compressor-de-imagens .resultado-converter button,
+    .compressor-de-imagens .resultado-converter a,
+    .conversor-de-imagens .resultado-comprimir button,
+    .conversor-de-imagens .resultado-comprimir a,
+    .conversor-de-imagens .resultado-converter button,
+    .conversor-de-imagens .resultado-converter a {
+      background: #111;
+    }
+
+    .compressor-de-imagens {
+      margin-bottom: 7.5rem;
+    }
+
+    .form {
+      width: 100%;
+      background: #edeef0;
+      padding: 1.5rem;
+    }
+
+    .form input:not([type="radio"]),
+    .form select {
+      width: 100%;
+      height: 3rem;
+      font-size: 1rem;
+      border: 1px solid #fff;
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+    }
+
+    .form input:not([type="radio"]):hover:not(:disabled),
+    .form select:hover:not(:disabled) {
+      border-color: #5b1ab2;
+    }
+
+    .form input:not([type="radio"])[type="file"],
+    .form select[type="file"] {
+      display: none;
+    }
+
+    .form label {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      margin-bottom: 1rem;
+    }
+
+    .form label[for="comprimir"],
+    .form label[for="converter"] {
+      margin-bottom: 2rem;
+      cursor: pointer;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      color: #454545;
+      width: 100%;
+      height: 200px;
+      border: 3px dashed #fff;
+      border-radius: 1rem;
+      -webkit-transition: 0.2s;
+      transition: 0.2s;
+      padding: 1rem;
+    }
+
+    .form label[for="comprimir"] span,
+    .form label[for="converter"] span {
+      font-size: 2rem;
+      color: #5b1ab2;
+      margin-left: 1rem;
+      font-weight: normal;
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px);
+    }
+
+    .form label[for="comprimir"] img,
+    .form label[for="converter"] img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: contain;
+      object-fit: contain;
+    }
+
+    .form .radio {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form .radio label {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      margin: 0;
+      width: 100%;
+      height: 3rem;
+      background: #fff;
+      border-radius: 1rem;
+      padding-left: 1rem;
+    }
+
+    .form .radio .input-group {
+      background: #fff;
+      border-radius: 1rem;
+      width: 50%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-left: 1rem;
+    }
+
+    .form .radio input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: #5b1ab2;
+    }
+
+    .form:hover {
+      border-color: #5b1ab2;
+    }
+  </style>
+
+  <section class="tratamento-de-imagens">
+    <header>
+      <h1>Conversor de imagens</h1>
+    </header>
+    <main>
+
+      <div class="conversor-de-imagens">
+        <div class="form">
+          <label for="converter">Anexar arquivo <span>+</span></label>
+          <input type="file" name="converter" id="converter" accept="image/*" multiple>
+          <label for="">Converter para:</label>
+          <select name="tipo" id="" class="tipo-de-arquivo">
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WebP</option>
+          </select>
+          <button type="button" class="button-converter" onclick="handleSubmitImages()">Converter arquivo</button>
+
+        </div>
+
+
+        <div class="resultado-converter">
+          <div class="image">
+            <h3>Resultado de conversão <button onclick="clearConvert()">X</button></h3>
+
+            <div class="image-result">
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+  <script>
+    const converter = document.querySelector("#converter");
+    const buttonConverter = document.querySelector(".button-converter");
+    const typeInput = document.querySelector(".tipo-de-arquivo");
+    const convertResultDiv = document.querySelector(".resultado-converter");
+
+    const inputConverterData = {
+      img: false,
+      type: false,
+    };
+
+    typeInput.addEventListener("input", (e) => {
+      if (e.target.value !== "") {
+        inputConverterData.percentage = true;
+      } else {
+        inputConverterData.percentage = false;
+      }
+      updateButtonConverter();
+    });
+
+    converter.addEventListener("change", (e) => {
+      const files = e.target.files;
+      const labelConverter = document.querySelector('label[for="converter"]');
+      labelConverter.innerHTML = "";
+
+      Array.from(files).forEach((file) => {
+        const blob = URL.createObjectURL(file);
+
+        const img = document.createElement("img");
+
+        img.src = blob;
+        inputConverterData.img = true;
+        labelConverter.appendChild(img);
+      });
+
+      updateButtonConverter();
+    });
+
+    function updateButtonConverter() {
+      buttonConverter.disabled = inputConverterData.img && inputConverterData.type;
+    }
+
+    function renderResultConvertedImage(url, filename) {
+      const loading = document.querySelector(".loading");
+      convertResultDiv.removeChild(loading);
+
+      const resultDiv = document.querySelector(
+        ".resultado-converter .image .image-result"
+      );
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("wrapper");
+
+      const button = createDownloadButton(url, filename);
+      const p = document.createElement("p");
+
+      p.innerHTML = filename;
+
+      const img = document.createElement("img");
+      img.src = url;
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(p);
+      wrapper.appendChild(button);
+
+      resultDiv.appendChild(wrapper);
+    }
+
+    function clearConvert() {
+      const imageResult = document.querySelector(
+        ".resultado-converter .image .image-result"
+      );
+      const results = document.querySelectorAll(
+        ".resultado-converter .image .image-result .wrapper"
+      );
+
+      results.forEach(result => {
+        imageResult.removeChild(result)
+      })
+
+      inputConverterData.img = false;
+      inputConverterData.type = false;
+    }
+
+    async function handleSubmitImages() {
+      const files = document.querySelector("#converter").files;
+
+      Array.from(files).forEach(async (file) => {
+        const blob = URL.createObjectURL(file);
+        await converterArquivo(blob, file.name);
+      });
+    }
+
+    async function converterArquivo(blob, filename) {
+      clearConvert();
+
+      const p = document.createElement("p");
+      p.innerHTML = "Convertendo...";
+      p.classList.add("loading");
+      convertResultDiv.appendChild(p);
+
+      const tipoDeArquivo = document.querySelector(".tipo-de-arquivo").value;
+
+      if (!blob || !tipoDeArquivo) {
+        return;
+      }
+
+      let name, url;
+      const img = new Image();
+      img.src = blob;
+
+      setTimeout(async () => {
+        const canvas = await imageConversion.imagetoCanvas(img);
+        const obj = await imageConversion.canvastoFile(
+          canvas,
+          0.5,
+          "image/" + tipoDeArquivo
+        );
+
+        url = URL.createObjectURL(obj);
+
+        name =
+          "converted_" +
+          filename
+            .replace(".png", "")
+            .replace(".jpg", "")
+            .replace(".jpeg", "")
+            .replace(".jfif", "")
+            .replace(".webp", "") +
+          "." +
+          tipoDeArquivo;
+
+        renderResultConvertedImage(url, name);
+      }, 1000);
+    }
+
+    function createDownloadButton(fileUrl, fileName) {
+      var a = document.createElement("a");
+      a.href = fileUrl;
+      a.innerHTML = "Baixar arquivo";
+      a.setAttribute("download", fileName);
+      return a;
+    }
+  </script>
+</body>
+
+</html>
