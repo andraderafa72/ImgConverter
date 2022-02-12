@@ -125,7 +125,6 @@ async function converterArquivo(blob, filename) {
     url = URL.createObjectURL(obj);
 
     name =
-      "converted_" +
       filename
         .replace(".png", "")
         .replace(".jpg", "")
